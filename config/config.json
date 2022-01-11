@@ -1,0 +1,10 @@
+{
+  "Logger": {
+    "UseSysLog": false,
+    "LogLevel": "INFO",
+    "LogFormat": "plain"
+  },
+  "RpcHost": "localhost",
+  "RpcPort": 13001,
+  "RpcTimeoutConn": 15
+}
