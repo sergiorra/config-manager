@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
   <h1>Config Manager</h1>
   <blockquote>This config manager is intended to manage an application configuration via a variety of providers
     like defaults, global config files, environment config files, environment variables and flags. It is based
