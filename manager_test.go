@@ -12,7 +12,7 @@ func TestDefaults(t *testing.T) {
 		Rpchost  string
 	}
 
-	cfg := new(Config)
+	cfg := &Config{}
 	mgr := NewManager(WithDefault("env", "LOCAL"), WithDefault("loglevel", "TEST"))
 
 	err := mgr.Load(cfg)

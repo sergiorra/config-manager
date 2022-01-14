@@ -1,4 +1,4 @@
-<div align="center">
+<div style="text-align: center;">
   <h1>Config Manager</h1>
   <blockquote>This config manager is intended to manage an application configuration via a variety of providers
     like defaults, global config files, environment config files, environment variables and flags. It is based
@@ -32,7 +32,7 @@ For the Application configuration:
 
 ### Prerequisites
 
-The Config Manager has some prerequistites in order to work as expected:
+The Config Manager has some prerequisites in order to work as expected:
 
 - Folder `config` on the root of the project
 - The global config file will be named `config.json` and will be inside the `config` folder. It is a mandatory file.
@@ -64,7 +64,7 @@ You can check how Viper works and all its documentation in the [Viper](https://g
 ### Simple load config
 
 ```go
-cfg := new(Configuration)
+cfg := &Configuration{}
 
 mgr := config.NewManager()
 
@@ -77,7 +77,7 @@ if err != nil {
 ### Load config with default values
 
 ```go
-cfg := new(Configuration)
+cfg := &Configuration{}
 
 mgr := config.NewManager(config.WithDefault("rpchost", 13000), config.WithDefault("logger.loglevel", "WARN"))
 
@@ -90,7 +90,7 @@ if err != nil {
 ### Load config with default values and environment variables prefix
 
 ```go
-cfg := new(Configuration)
+cfg := &Configuration{}
 
 mgr := config.NewManager(config.WithEnvPrefix("OFFCTRL"), config.WithDefault("rpchost", 13000))
 
