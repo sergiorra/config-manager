@@ -41,7 +41,7 @@ type Manager struct {
 // Option function structure for the optional functions
 type Option func(*Manager)
 
-// NewManager initializes a new Config Manager and applies all the optional functions
+// NewManager initializes a new Manager and applies all the optional functions
 func NewManager(opts ...Option) *Manager {
 	mgr := &Manager{
 		viper.New(),

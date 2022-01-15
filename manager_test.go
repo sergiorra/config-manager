@@ -1,28 +1,32 @@
 package config_manager
 
 import (
-	"testing"
-
 	"github.com/stretchr/testify/assert"
+	"os"
+	"testing"
 )
 
-func TestDefaults(t *testing.T) {
+func TestOptionalFunctions(t *testing.T) {
 	type Config struct {
 		LogLevel string
-		Rpchost  string
+		RpcPort  string
 	}
 
-	cfg := &Config{}
-	mgr := NewManager(WithDefault("env", "LOCAL"), WithDefault("loglevel", "TEST"))
-
-	err := mgr.Load(cfg)
-	if err != nil {
+	if err := os.Setenv("APP_RPCPORT", "8080"); err != nil {
 		t.Error(err)
 	}
 
-	loglevel := mgr.viper.GetString("loglevel")
-	env := mgr.viper.GetString("env")
+	cfg := &Config{}
+	mgr := NewManager(WithEnvPrefix("APP"), WithDefault("env", "LOCAL"), WithDefault("loglevel", "TEST"))
 
-	assert.Equal(t, loglevel, "TEST")
-	assert.Equal(t, env, "LOCAL")
+	if err := mgr.Load(cfg); err != nil {
+		t.Error(err)
+	}
+
+	if err := os.Unsetenv("APP_RPCPORT"); err != nil {
+		t.Error(err)
+	}
+
+	assert.Equal(t, cfg.LogLevel, "TEST")
+	assert.Equal(t, cfg.RpcPort, "8080")
 }

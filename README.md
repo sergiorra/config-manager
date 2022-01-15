@@ -94,7 +94,7 @@ if err != nil {
 ```go
 cfg := &Configuration{}
 
-mgr := config.NewManager(config.WithEnvPrefix("OFFCTRL"), config.WithDefault("rpchost", 13000))
+mgr := config.NewManager(config.WithEnvPrefix("APP"), config.WithDefault("rpchost", 13000))
 
 err := mgr.Load(cfg)
 if err != nil {
@@ -124,9 +124,9 @@ $ export LOGGER_LOGLEVEL="WARN"
 $ export RPCPORT="8080"
 
 // with prefix
-$ export OFFCTRL_ENV="PROD"
-$ export OFFCTRL_LOGGER_LOGLEVEL="WARN"
-$ export OFFCTRL_RPCPORT="8080"
+$ export APP_ENV="PROD"
+$ export APP_LOGGER_LOGLEVEL="WARN"
+$ export APP_RPCPORT="8080"
 ```
 
 ### Flags usage example
