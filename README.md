@@ -29,7 +29,7 @@ For the Application configuration:
 1. Defaults
 2. Global config file
 3. Environment config file
-4. Environment Variables
+4. Environment variables
 5. Flags
 
 ### Prerequisites
