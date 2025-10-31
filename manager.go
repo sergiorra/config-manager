@@ -3,6 +3,7 @@ package config_manager
 import (
 	"fmt"
 	"reflect"
+	"slices"
 	"strings"
 
 	"github.com/spf13/pflag"
@@ -154,7 +155,7 @@ func (m *Manager) bindApp(cfg interface{}) error {
 	v := reflect.Indirect(reflect.ValueOf(cfg))
 	for i := 0; i < v.NumField(); i++ {
 		fieldName := strings.ToLower(v.Type().Field(i).Name)
-		if contains(reservedHostKeys, fieldName) {
+		if slices.Contains(reservedHostKeys, fieldName) {
 			continue
 		}
 
@@ -201,16 +202,6 @@ func (m *Manager) bindApp(cfg interface{}) error {
 	}
 
 	return nil
-}
-
-// contains checks if an specific string is in a string slice
-func contains(values []string, val string) bool {
-	for _, v := range values {
-		if v == val {
-			return true
-		}
-	}
-	return false
 }
 
 // defineFlag defines a flag for the fieldName and its type received

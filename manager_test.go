@@ -1,9 +1,10 @@
 package config_manager
 
 import (
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestOptionalFunctions(t *testing.T) {
